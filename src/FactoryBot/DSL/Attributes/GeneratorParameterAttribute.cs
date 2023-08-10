@@ -17,7 +17,10 @@ namespace FactoryBot.DSL.Attributes
 
         public object? GetParameterValue(MethodInfo method)
         {
-            if (Factory == null) return Value;
+            if (Factory == null)
+            {
+                return Value;
+            }
 
             var factoryMethod = method.DeclaringType.GetMethod(Factory, BindingFlags.NonPublic | BindingFlags.Static);
             if (factoryMethod?.GetParameters()?.Any() ?? true)

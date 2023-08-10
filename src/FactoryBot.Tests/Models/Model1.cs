@@ -1,6 +1,10 @@
 namespace FactoryBot.Tests.Models
 {
-    public class Model1
+    public class BaseClass
+    {
+        public int Id { get; set; }
+    }
+    public class Model1: BaseClass
     {
         public Model1()
         {

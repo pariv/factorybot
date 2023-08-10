@@ -48,7 +48,7 @@ namespace FactoryBot.Configurations
         public void MergeProperties(BotConfiguration configuration)
         {
             var existingProperties = Properties.Select(x => x.Property).ToArray();
-            var propertiesToAdd = configuration.Properties.Where(x => !existingProperties.Contains(x.Property));
+            var propertiesToAdd = configuration.Properties.Where(x => !existingProperties.Contains(x.Property, new MemberEqualityComparer()));
             Properties.AddRange(propertiesToAdd);
         }
 

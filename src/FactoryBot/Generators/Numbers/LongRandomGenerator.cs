@@ -19,7 +19,10 @@ namespace FactoryBot.Generators.Numbers
 
         protected override long NextInternal()
         {
-            if (_to == _from) return _to;
+            if (_to == _from)
+            {
+                return _to;
+            }
 
             var bytes = NextBytesRandom(8);
             var value = BitConverter.ToInt64(bytes, 0);

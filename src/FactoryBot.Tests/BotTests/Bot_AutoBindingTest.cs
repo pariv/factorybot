@@ -142,11 +142,12 @@ namespace FactoryBot.Tests.BotTests
         [Test]
         public void AutoBinding_OverrideDefinition_ShouldBindAllPropertiesWithOverride()
         {
-            Bot.DefineAuto(x => new Model1() { Number = x.Integer.Any(1, 10) });
+            Bot.DefineAuto(x => new Model1() { Id = x.Integer.Any(10, 100), Number = x.Integer.Any(1000, 2000)});
 
             var model = Bot.Build<Model1>();
 
-            Assert.That(model.Number, Is.InRange(1, 10));
+            Assert.That(model.Number, Is.InRange(1000, 2000));
+            Assert.That(model.Id, Is.InRange(10, 100));
             Assert.That(model.Text, Is.Not.Null);
         }
 
